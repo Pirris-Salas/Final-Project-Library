@@ -43,17 +43,60 @@ def months(i):
     }
     return switcher.get(i,"No Valid Mont")
 
+#This function evaluates the last number of the day, so we can add the correct acronym
+def acronym(txt):
+    number = 0
+    msg = ""
+    
+    for x in txt:
+        number = number+1
+
+    if number == 1:
+        if(txt == "1"):
+            msg = "st"
+        elif(txt == "2"):
+            msg ="nd"
+        elif(txt == "3"):
+            msg ="rd"
+        else:
+            msg ="th"
+
+    if number == 2:
+        if x[0:2] == "1":
+            if(txt == "11"):
+                msg= "th"
+            else:
+                msg ="st"
+            
+        elif(x[0:2] == "2"):
+            if(txt == "12"):
+                msg= "th"
+            else:
+                msg= "nd"
+            
+        elif(x[0:2] == "3"):
+            if(txt == "13"):
+                msg ="th"
+            else:
+                msg ="rd"
+        else:
+            msg= "th"
+
+        return msg
+      
+
 #Today Function
 def today():
     today = datetime.today()
     day = today.day #Day of the month
+    text = acronym(str(day))
     weekDay = (days(today.weekday())) 
     month =  (months(today.month))
     Year = today.year
-    print (f"\nHoy es {weekDay} {day} del {month} de {Year}\n") 
+    return print (f"\nToday is {weekDay}, {month} {day}{text}, {Year}\n") 
+
 
 
 #This function receives a string and returns a notification
 def message(msg):
     print(msg)
-

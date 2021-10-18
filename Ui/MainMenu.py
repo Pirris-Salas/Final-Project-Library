@@ -9,7 +9,7 @@ def mainMenu():
     print("* 2. Books                             *")
     print("* 0. Exit                              *")
     print("*                                      *")
-    print("****************************************") 
+    print("****************************************\n") 
 
 
 #Welcome Notification
@@ -18,7 +18,7 @@ def welcomeNotification():
     print("*                                      *")
     print("*        Welcome!!                     *")
     print("*                                      *")
-    print("****************************************") 
+    print("****************************************\n") 
 
 
 #GoodBye Notification
@@ -27,7 +27,7 @@ def byeNotification():
     print("*                                      *")
     print("*  Thanks for your visit. Farewell!    *")
     print("*                                      *")
-    print("****************************************")
+    print("****************************************\n")
 
 def updatingInstruction():
     print("*************************************")

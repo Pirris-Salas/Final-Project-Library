@@ -4,10 +4,11 @@
 import time
 import Books.Repository.BooksRepository as booksDatabase
 import GeneralMethods as general
-import Ui.BooksMenu as menu
+import Books.Ui.BooksMenu as menu
 import Ui.MainMenu as generalNotifications
 
 class Books:
+    
     def _init_(self):
         pass
     
@@ -120,7 +121,7 @@ class Books:
             print(f"ID: {id}\nBook Title: {book[0]}\nBook Genre: {book[1]}\nBook Author: {book[2]}\n")
             print("*********************************************************")
             msg = ""
-            input("Presione enter para continuar...")
+            input("Press Enter To Continue...")
 
 
 #Function for deleting a book by the ID
