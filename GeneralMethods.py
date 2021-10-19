@@ -2,15 +2,19 @@
 #Persons and Books
 
 import os
+import sys
+import time
 from datetime import date
 from datetime import datetime
 
 #Funtion for clearing the screen
 def clear():
     if os.name == "posix":
-       os.system ("clear")
+        os.system ("clear")
     elif os.name == "ce" or os.name == "nt" or os.name == "dos":
-       os.system ("cls")
+        os.system ("cls")
+
+clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
 #This function returns as a string the weekday
 def days(i):
@@ -100,3 +104,4 @@ def today():
 #This function receives a string and returns a notification
 def message(msg):
     print(msg)
+

@@ -4,7 +4,8 @@
 
 def booksMenu():
     print("****************************************") 
-    print("* B O O K S    M E N U                 *")
+    print("*       B O O K S    M E N U           *")
+    print("****************************************") 
     print("* a. Add New Book                      *")
     print("* b. Modify Existing Book              *")
     print("* c. View Book                         *")
@@ -13,17 +14,26 @@ def booksMenu():
     print("* f. Find a Book                       *")
     print("* 0. Back To The Main Menu             *")
     print("*                                      *")
-    print("****************************************") 
+    print("****************************************\n") 
 
 
 def newBook():
     print("****************************************")
     print("*        N E W   B O O K               *")
-    print("****************************************")
+    print("****************************************\n")
 
 
 def choosingBook(msg):
     print("****************************************")
     print("*        Choose The Book ID            *")
-    print("*      You Would Like to {msg}         *")
-    print("****************************************")
+    print(f"*      You Would Like to {msg}         *")
+    print("****************************************\n")
+
+def internalOptionMenu(banner, option):
+    print("****************************************") 
+    print(f"*       {banner}           *")
+    print("****************************************") 
+    print(f"* 1. {option}              *")
+    print("* 0. Back To The Previous Menu         *")
+    print("*                                      *")
+    print("****************************************\n") 

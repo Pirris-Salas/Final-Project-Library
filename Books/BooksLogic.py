@@ -10,6 +10,7 @@ import Books.Ui.BooksMenu as booksMenu
 import GeneralMethods as general
 import Books.Model.ClsBooks as clsBook
 
+
 def opcBooks(opc):
     msg=""
     while opc != "0":
@@ -32,6 +33,7 @@ def opcBooks(opc):
         elif(opc.lower() == "b"):
             general.clear()
             clsBook.Books().modifyBook()
+            general.clear()
 
         elif(opc.lower() == "c"):
             general.clear()
@@ -54,6 +56,8 @@ def opcBooks(opc):
 
         elif(opc == "0"):
             general.clear()
-            msg=""
+            general.message("\nL o a d i n g   S c r e e n")
+            time.sleep(2)
+            break
         else:
             msg="Wrong pick.\n\nCleaning Screen...\n"

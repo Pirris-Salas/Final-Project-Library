@@ -10,7 +10,7 @@ import Ui.MainMenu as mainMenu
 import GeneralMethods as general
 import Books.BooksLogic as booksLogic
 
-def main():
+def start():
     opc=""
     msg=""
 
@@ -40,4 +40,4 @@ def main():
             msg="Wrong pick.\n\nCleaning Screen...\n"
 
 #Executing main function
-main()
+start()
