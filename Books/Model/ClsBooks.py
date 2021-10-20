@@ -45,6 +45,7 @@ class Books:
         opc = ""
         msg = ""
         while opc != "0":
+            general.clear()
             if(msg != ""):
                 general.clear()
                 general.message(msg)
@@ -72,6 +73,7 @@ class Books:
                        print(validationMsg)
                        time.sleep(1)
                        input("\nPlease Press Enter To Continue ...")
+                       general.clear()
                        continue
             
                     else:
@@ -86,21 +88,25 @@ class Books:
                        elif (savingConfirmation.upper() == "N"):
                            input("\nPress Enter To Continue And Try Again...")
                            time.sleep(1)
+                           general.clear()
                            continue
                        else:
                            general.clear()
                            general.message("\nWrong letter.\nPlease Try Again\n\nCleaning Screen...\n")
                            time.sleep(1)
+                           general.clear()
                            continue
                 elif(opc == "0"):
                     general.clear()
                     general.message("\nL o a d i n g   S c r e e n")
                     time.sleep(2)
+                    general.clear()
                     break
                 else:
                     general.clear()
                     general.message("\nWrong pick.\nPlease Try Again\n\nCleaning Screen...\n")
                     time.sleep(2)
+                    general.clear()
                     continue
 
 
@@ -118,47 +124,92 @@ class Books:
 #Function for modifying an existing boook
     def modifyBook(self):
         general.clear()
-        Books().listBookbyID()
-        menu.choosingBook("Modify")
-        id = int(input("\nPlease type the book ID you would like to update: "))
-        book = booksDatabase.books.get(int(id), "Book does not exist!. Please try again.")
-        time.sleep(2)
-        general.clear()
-
-        if book == "\nBook does not exist!. Please try again.":
-            print(book)
-            time.sleep(2)
-        else:
-            general.clear()
-            generalNotifications.updatingInstruction()
-
-            bookName = input("Book Title: .......: ")
-            if not bookName:
-                bookName = book[0]
-
-            bookGenre = input("Genre: .......: ")
-            if not bookGenre:
-                bookGenre = book[1]
-
-            bookAuthor = input("Author: .......: ")
-            if not bookAuthor:
-                bookAuthor = book[2]
-
-            print("\n*************************************")
-            msg = ""
-            savingConfirmation = input("Are you sure all data are correct? (Y/N): ")
-            if(savingConfirmation.upper() == "Y"):
-                book = [bookName,bookGenre,bookAuthor]
-                booksDatabase.books[id] = book
-                general.message(f"\nBook: {bookName}. Updated Successfully.")
-                time.sleep(2)
-                input("Please Press Enter To Continue ...")
-                time.sleep(1)
+        opc =""
+        msg = ""
+        while opc != "0":
+            if(msg != ""):
                 general.clear()
-                
+                general.message(msg)
+                time.sleep(2)
+                general.clear()
+                continue
             else:
-                msg = ""
-                input("\nPress Enter To Continue And Try Again...")
+                general.clear()
+                general.today()
+                menu.internalOptionMenu("M O D I F Y  B O O K", "Update Book Info    ")
+
+                opc = input("\nPlease Pick a Number: ")
+
+                if(opc == "1"):
+                    general.clear()
+                    Books().listBookbyID()
+                    menu.choosingBook("Modify")
+
+                    try:
+                        id = int(input("\nPlease type the book ID you would like to update: "))
+                    except ValueError:
+                        id = int(Books().newID(booksDatabase.books))
+                    
+                    book = booksDatabase.books.get(int(id), "Book does not exist!. Please try again.")
+
+                    if book == "Book does not exist!. Please try again.":
+                        general.clear()
+                        print(book)
+                        time.sleep(2)
+                        general.clear()
+                        continue
+                    else:
+                        general.clear()
+                        generalNotifications.updatingInstruction()
+
+                        bookName = input("Book Title: .......: ")
+                        if not bookName:
+                            bookName = book[0]
+
+                        bookGenre = input("Genre: .......: ")
+                        if not bookGenre:
+                            bookGenre = book[1]
+
+                        bookAuthor = input("Author: .......: ")
+                        if not bookAuthor:
+                            bookAuthor = book[2]
+
+                        print("\n*************************************")
+                        
+                        savingConfirmation = input("\nAre you sure all data are correct? (Y/N): ")
+                        if(savingConfirmation.upper() == "Y"):
+                            book = [bookName,bookGenre,bookAuthor]
+                            booksDatabase.books[id] = book
+                            general.message(f"\nBook: {bookName}. Updated Successfully.")
+                            time.sleep(2)
+                            input("Please Press Enter To Continue ...")
+                            time.sleep(1)
+                            general.clear()
+                
+                        elif (savingConfirmation.upper() == "N"):
+                            input("\nPress Enter To Continue And Try Again...")
+                            time.sleep(1)
+                            general.clear()
+                            continue
+                        else:
+                           general.clear()
+                           general.message("\nWrong letter.\nPlease Try Again\n\nCleaning Screen...\n")
+                           time.sleep(1)
+                           general.clear()
+                           continue
+                elif(opc == "0"):
+                    general.clear()
+                    general.message("\nL o a d i n g   S c r e e n")
+                    time.sleep(2)
+                    general.clear()
+                    break
+                else:
+                    general.clear()
+                    general.message("\nWrong pick.\nPlease Try Again\n\nCleaning Screen...\n")
+                    time.sleep(2)
+                    general.clear()
+                    continue
+        
 
 
 #Function for viewing whole details of a specific book
@@ -167,6 +218,7 @@ class Books:
        opc = ""
        msg=""
        while opc != "0":
+           general.clear()
            if(msg != ""):
                general.clear()
                general.message(msg)
@@ -178,37 +230,43 @@ class Books:
                 general.today()
                 menu.internalOptionMenu("V I E W      B O O K", "Get Book Information")
 
-                opc = input("\nPlease Pick a Number: ")
+           opc = input("\nPlease Pick a Number: ")
                 
-                if(opc == "1"):
-                    Books().listBookbyID()
-                    menu.choosingBook("Access")
+           if(opc == "1"):
+               Books().listBookbyID()
+               menu.choosingBook("Access")
 
-                    try:
-                        id = int(input("\nPlease type the book ID: "))
-                    except ValueError:
-                        id = int(Books().newID(booksDatabase.books))
+               try:
+                   id = int(input("\nPlease type the book ID: "))
+               except ValueError:
+                    id = int(Books().newID(booksDatabase.books))
 
-                    book = booksDatabase.books.get(int(id), "Book does not exist!. Please try again.")
-                    if book == "Book does not exist!. Please try again.":
-                        print(book)
-                        time.sleep(2)
-                        continue 
-                    else:
-                        general.clear()
-                        print("*********************************************************")
-                        print(f"ID: {id}\nBook Title: {book[0]}\nBook Genre: {book[1]}\nBook Author: {book[2]}\n")
-                        print("*********************************************************")
-                        msg = ""
-                        input("Press Enter To Continue...")
-
-                elif(opc == "0"):
-                    general.clear()
-                    general.message("\nL o a d i n g   S c r e e n")
+               book = booksDatabase.books.get(int(id), "Book does not exist!. Please try again.")
+               if book == "Book does not exist!. Please try again.":
+                    print(book)
                     time.sleep(2)
-                    break
-                else:
-                    msg="Wrong pick.\n\nCleaning Screen...\n"
+                    general.clear()
+                    continue 
+               else:
+                    general.clear()
+                    print("*********************************************************")
+                    print(f"ID: {id}\nBook Title: {book[0]}\nBook Genre: {book[1]}\nBook Author: {book[2]}\n")
+                    print("*********************************************************")
+                    msg = ""
+                    input("Press Enter To Continue...")
+
+           elif(opc == "0"):
+                general.clear()
+                general.message("\nL o a d i n g   S c r e e n")
+                time.sleep(2)
+                general.clear()
+                break
+           else:
+                general.clear()
+                general.message("\nWrong pick.\nPlease Try Again\n\nCleaning Screen...\n")
+                time.sleep(2)
+                general.clear()
+                continue
                 
                     
 
@@ -217,29 +275,77 @@ class Books:
 #Function for deleting a book by the ID
     def deleteBook(self):
         general.clear()
-        Books.listBookbyID()
-        menu.choosingBook("Remove")
-
-        id = int(input("\nPlease type the book ID"))
-        book = booksDatabase.books.get(int(id), "Book does not exist!. Please try again.")
-        bookName = book[0]
+        opc =""
         
-        if book == "Book does not exist!. Please try again.":
-            print(book)
-            time.sleep(2)
-        else:
+        while opc != "0":
             general.clear()
-            print("*********************************************************")
-            print(f"ID: {id}\nBook Title: {book[0]}\nBook Genre: {book[1]}\nBook Author: {book[2]}\n")
-            print("*********************************************************")
-            msg = ""
-            delete = input("Are you sure you want to remove this Book? (Y/N)")
-            if(delete.upper() == "Y"):
-                del(booksDatabase.books[id])
-                general.message("Book: {bookName}. Removed Successfully.")
+            general.today()
+            menu.internalOptionMenu("R E M O V E  B O O K", "Delete Book Info    ")
+
+            opc = input("\nPlease Pick a Number: ")
+
+            if(opc == "1"):
+                general.clear()
+                Books().listBookbyID()
+                menu.choosingBook("Remove")
+
+                try:
+                    id = int(input("\nPlease type the book ID: "))
+                except ValueError:
+                    id = int(Books().newID(booksDatabase.books))
+
+                book = booksDatabase.books.get(int(id), "Book does not exist!. Please try again.")
+                bookName = book[0]
+        
+                if book == "Book does not exist!. Please try again.":
+                    general.clear()
+                    print(book)
+                    time.sleep(2)
+                    general.clear()
+                    continue
+                else:
+                    general.clear()
+                    print("*********************************************************")
+                    print(f"ID: {id}\nBook Title: {book[0]}\nBook Genre: {book[1]}\nBook Author: {book[2]}\n")
+                    print("*********************************************************")
+            
+                    delete = input("Are you sure you want to remove this Book? (Y/N): ")
+                    if(delete.upper() == "Y"):
+                        del(booksDatabase.books[id])
+                        general.message(f"\nBook: {bookName}. Removed Successfully.")
+                        time.sleep(2)
+                        general.clear()
+                        continue
+
+                    elif (delete.upper() == "N"):
+                        input("\nPress Enter To Continue And Try Again...")
+                        time.sleep(1)
+                        general.clear()
+                        continue
+                    else:
+                        general.clear()
+                        general.message("\nWrong letter.\nPlease Try Again\n\nCleaning Screen...\n")
+                        time.sleep(1)
+                        general.clear()
+                        continue
+            elif(opc == "0"):
+                general.clear()
+                general.message("\nL o a d i n g   S c r e e n")
+                time.sleep(2)
+                general.clear()
+                break
             else:
-                msg = ""
-            input("Press Enter To Continue And Try Again...")
+                general.clear()
+                general.message("\nWrong pick.\nPlease Try Again\n\nCleaning Screen...\n")
+                time.sleep(2)
+                general.clear()
+                continue
+                
+            
+        
+
+
+
 
 #Function for display the existing Books List
     def listBook(self):

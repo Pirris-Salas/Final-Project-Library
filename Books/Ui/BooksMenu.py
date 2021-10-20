@@ -26,7 +26,7 @@ def newBook():
 def choosingBook(msg):
     print("****************************************")
     print("*        Choose The Book ID            *")
-    print(f"*      You Would Like to {msg}         *")
+    print(f"*      You Would Like to {msg}        *")
     print("****************************************\n")
 
 def internalOptionMenu(banner, option):

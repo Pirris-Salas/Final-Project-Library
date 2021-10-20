@@ -60,4 +60,7 @@ def opcBooks(opc):
             time.sleep(2)
             break
         else:
-            msg="Wrong pick.\n\nCleaning Screen...\n"
+            general.clear()
+            general.message("\nWrong pick.\nPlease Try Again\n\nCleaning Screen...\n")
+            time.sleep(2)
+            continue
