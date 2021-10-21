@@ -1,4 +1,5 @@
 #Database diccionary - This is the default data for Persons
+# Clean Arquitecture Principles
 
 personsArray = {1:["Nayarit Aguirre Aguirre", "nayari@gmail.com"],
                 2:["Antonio José Araya Ruiz", "antonio@gmail.com"],
