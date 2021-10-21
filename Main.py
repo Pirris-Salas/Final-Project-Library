@@ -9,6 +9,7 @@ from Books.Ui.BooksMenu import booksMenu
 import Ui.MainMenu as mainMenu
 import GeneralMethods as general
 import Books.BooksLogic as booksLogic
+import Persons.PersonsLogic as personsLogic
 
 def start():
     opc=""
@@ -27,10 +28,17 @@ def start():
         mainMenu.mainMenu()  #Displaying Main Menu
         opc = input("\nPlease Pick a Number: ")
 
-        if(opc == "2"):
+        if(opc == "1"):
+            general.clear()
+            personsLogic.opcPersons("")
+            msg=""
+            general.clear()
+
+        elif(opc == "2"):
             general.clear()
             booksLogic.opcBooks("")
             msg=""
+            general.clear()
         
         elif(opc == "0"):
             general.clear()

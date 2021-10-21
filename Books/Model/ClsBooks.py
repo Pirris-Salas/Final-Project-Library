@@ -6,7 +6,6 @@ import Books.Repository.BooksRepository as booksDatabase
 import GeneralMethods as general
 import Books.Ui.BooksMenu as menu
 import Ui.MainMenu as generalNotifications
-import Books.BooksLogic as booksLogic
 
 class Books:
     
