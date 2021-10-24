@@ -1,6 +1,5 @@
 # Final-Project-Library
 # Programming Introduction + Python :rocket: . :two::zero::two::one: ![Python](https://media.giphy.com/media/9KK3KhhILvNeT2iIDt/giphy.gif)
-## **U Creativa**
 # ![](https://i.imgur.com/bdxHEBO.png)
 
 # ![](https://i.imgur.com/LYEf20T.png)
