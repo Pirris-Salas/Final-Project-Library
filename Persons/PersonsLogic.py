@@ -55,8 +55,7 @@ def opcPersons(opc):
 
         elif(opc.lower() == "f"):
             general.clear()
-            space = ""
-            input("Please Press Enter To Continue... On Construction")
+            clsPerson.Persons().findPerson()
             general.clear()
 
         elif(opc == "0"):

@@ -2,6 +2,7 @@
 #Also all CRUD functions are stated here
 
 import time
+import string
 import Persons.Repository.PersonsRepository as personsDatabase
 import GeneralMethods as general
 import Persons.Ui.PersonsMenu as menu
@@ -68,9 +69,9 @@ class Persons:
                     savingConfirmation = input("Are you sure all data are correct? (Y/N): ")
                        
                     if(savingConfirmation.upper() == "Y"):
-                        newPerson = [personName,email, -1]
+                        newPerson = [string.capwords(personName),email, -1]
                         personsDatabase.persons[id] = newPerson
-                        general.message(f"\nPerson: '{personName}'. Saved Successfully.")
+                        general.message(f"\nPerson: '{string.capwords(personName)}'. Saved Successfully.")
                         time.sleep(2)
                         input("Please Press Enter To Continue ...")
                     elif (savingConfirmation.upper() == "N"):
@@ -152,9 +153,9 @@ class Persons:
                         
                     savingConfirmation = input("\nAre you sure all data are correct? (Y/N): ")
                     if(savingConfirmation.upper() == "Y"):
-                        person = [personName,email]
+                        person = [string.capwords(personName),email]
                         personsDatabase.persons[id] = person
-                        general.message(f"\nPerson: {personName}. Updated Successfully.")
+                        general.message(f"\nPerson: {string.capwords(personName)}. Updated Successfully.")
                         time.sleep(2)
                         input("Please Press Enter To Continue ...")
                         time.sleep(1)
@@ -311,4 +312,80 @@ class Persons:
         time.sleep(2)
     
 
- 
+ #Function for finding Persons by Name or by ID
+    def findPerson(self):
+        general.clear()
+        opc = ""
+
+        while opc != "0":
+            general.clear()
+            general.today()
+            menu.findPersonMenu()
+
+            opc = input("\nPlease Pick a Number: ")
+
+            if(opc == "1"):
+                general.clear()
+                menu.writingNameMenu()
+
+                personName = input("Name: .......: ")
+                if not personName:
+                    print("\nField can not be empty. Please try again.")
+                    time.sleep(1)
+                    general.clear()
+                    continue
+                
+                print("\n*************************************")
+
+                savingConfirmation = input("\nAre you sure the name is correct? (Y/N): ")
+                if(savingConfirmation.upper() == "Y"):
+                    contador = 0
+                    resultsID = []
+                    for datos in personsDatabase.persons.items():
+                        listaPersonas = list(datos)
+                        contador = contador + 1
+    
+                        if str.__contains__(str(listaPersonas[1]), string.capwords(personName)):
+                            resultsID.append(contador)
+                    
+                    if(len(resultsID)> 0):
+                        general.clear()
+                        menu.resultsFound()
+                        for id in resultsID:
+                            person = personsDatabase.persons.get(int(id)) 
+                            print("*********************************************************")
+                            print(f"ID: {id}\nName: {person[0]}\nEmail: {person[1]}\n")
+                            print("*********************************************************")
+                        input("\nPress Enter To Continue...")
+                    
+                    else:
+                        general.clear()
+                        print("\nNo Results Found!. Please try again.")
+                        time.sleep(2)
+                        general.clear()
+                        continue
+                    
+
+                elif (savingConfirmation.upper() == "N"):
+                    input("\nPress Enter To Continue And Try Again...")
+                    time.sleep(1)
+                    general.clear()
+                    continue
+                else:
+                    general.clear()
+                    general.message("\nWrong letter.\nPlease Try Again\n\nCleaning Screen...\n")
+                    time.sleep(1)
+                    general.clear()
+                    continue
+            elif(opc == "0"):
+                general.clear()
+                general.message("\nL o a d i n g   S c r e e n")
+                time.sleep(2)
+                general.clear()
+                break
+            else:
+                general.clear()
+                general.message("\nWrong pick.\nPlease Try Again\n\nCleaning Screen...\n")
+                time.sleep(2)
+                general.clear()
+                continue            
