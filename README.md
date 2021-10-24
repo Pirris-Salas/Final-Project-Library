@@ -1,6 +1,6 @@
 # Final-Project-Library
 #
-# U Creativa - Programming Introduction + Python :rocket: __ ![Python](https://media.giphy.com/media/9KK3KhhILvNeT2iIDt/giphy.gif)
+# U Creativa - Programming Introduction + Python :rocket: ![Python](https://media.giphy.com/media/9KK3KhhILvNeT2iIDt/giphy.gif)
 # ![](https://i.imgur.com/bdxHEBO.png)
 
 # ![](https://i.imgur.com/LYEf20T.png)
