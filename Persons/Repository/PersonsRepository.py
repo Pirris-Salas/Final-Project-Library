@@ -1,8 +1,6 @@
 #Database diccionary - This is the default data for Persons
 # Clean Arquitecture Principles
 
-#import Persons.Ui.PersonsMenu as menu
-
 personsArray = {1:["Nayarit Aguirre Aguirre", "nayari@gmail.com"],
                 2:["Antonio José Araya Ruiz", "antonio@gmail.com"],
                 3:["María Fernanda Arguedas González", "maria@gmail.com"],

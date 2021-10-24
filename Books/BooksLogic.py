@@ -29,6 +29,7 @@ def opcBooks(opc):
         if (opc.lower() == "a"):
             general.clear()
             clsBook.Books().addBook()
+            general.clear()
 
         elif(opc.lower() == "b"):
             general.clear()
@@ -38,29 +39,34 @@ def opcBooks(opc):
         elif(opc.lower() == "c"):
             general.clear()
             clsBook.Books().viewBook()
+            general.clear()
         
         elif(opc.lower() == "d"):
             general.clear()
             clsBook.Books().deleteBook()
+            general.clear()
 
         elif(opc.lower() == "e"):
             general.clear()
             clsBook.Books().listBook()
             space = ""
             input("Please Press Enter To Continue...")
+            general.clear()
 
         elif(opc.lower() == "f"):
             general.clear()
-            space = ""
-            input("Please Press Enter To Continue... On Construction")
+            clsBook.Books().findBook()
+            general.clear()
 
         elif(opc == "0"):
             general.clear()
             general.message("\nL o a d i n g   S c r e e n")
             time.sleep(2)
+            general.clear()
             break
         else:
             general.clear()
             general.message("\nWrong pick.\nPlease Try Again\n\nCleaning Screen...\n")
             time.sleep(2)
+            general.clear()
             continue

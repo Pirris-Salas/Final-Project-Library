@@ -1,6 +1,7 @@
 #ClsBooks is used for modeling all input data from the user
 #Also all CRUD functions are stated here
 
+import string
 import time
 import Books.Repository.BooksRepository as booksDatabase
 import GeneralMethods as general
@@ -79,9 +80,12 @@ class Books:
                        savingConfirmation = input("Are you sure all data are correct? (Y/N): ")
                        
                        if(savingConfirmation.upper() == "Y"):
-                           newBook = [bookName,bookGenre,bookAuthor, -1]
+                           newBook = [
+                            string.capwords(bookName),
+                            string.capwords(bookGenre),
+                            string.capwords(bookAuthor), -1]
                            booksDatabase.books[id] = newBook
-                           general.message(f"\nNew Book: '{bookName}'. Saved Successfully.")
+                           general.message(f"\nNew Book: '{string.capwords(bookName)}'. Saved Successfully.")
                            time.sleep(2)
                            input("Please Press Enter To Continue ...")
                        elif (savingConfirmation.upper() == "N"):
@@ -177,9 +181,12 @@ class Books:
                         
                         savingConfirmation = input("\nAre you sure all data are correct? (Y/N): ")
                         if(savingConfirmation.upper() == "Y"):
-                            book = [bookName,bookGenre,bookAuthor]
+                            book = [
+                                string.capwords(bookName),
+                                string.capwords(bookGenre),
+                                string.capwords(bookAuthor)]
                             booksDatabase.books[id] = book
-                            general.message(f"\nBook: {bookName}. Updated Successfully.")
+                            general.message(f"\nBook: {string.capwords(bookName)}. Updated Successfully.")
                             time.sleep(2)
                             input("Please Press Enter To Continue ...")
                             time.sleep(1)
@@ -351,6 +358,87 @@ class Books:
         booksList = booksDatabase.books
         for key, value in booksList.items():
             print(f"ID: {key}\nBook Title: {value[0]}\nBook Genre: {value[1]}\nBook Author: {value[2]}\n")
+
+
+# Funtion for finding Books by Book Name, Author or Genre
+    def findBook(self):
+        general.clear()
+        opc = ""
+
+        while opc != "0":
+            general.clear()
+            general.today()
+            menu.findBookMenu()
+
+            opc = input("\nPlease Pick a Number: ")
+
+            if(opc == "1"):
+                general.clear()
+                menu.writingNameMenu()
+
+                searchVariable = input("What are you looking for? Type the word:  ")
+
+                if not searchVariable or searchVariable.isspace():
+                    print("\nField can not be empty. Please try again.")
+                    time.sleep(1)
+                    general.clear()
+                    continue
+                
+                print("\n*************************************")
+
+                savingConfirmation = input("\nAre you sure this is what are you looking for? (Y/N): ")
+
+                if(savingConfirmation.upper() == "Y"):
+                    contador = 0
+                    resultsID = []
+                    for datos in booksDatabase.books.items():
+                        booksList = list(datos)
+                        contador = contador + 1
+    
+                        if str.__contains__(str(booksList[1]), string.capwords(searchVariable)):
+                            resultsID.append(contador)
+                    
+                    if(len(resultsID)> 0):
+                        general.clear()
+                        menu.resultsFound()
+                        for id in resultsID:
+                            book = booksDatabase.books.get(int(id)) 
+                            print("*********************************************************")
+                            print(f"ID: {id}\nName: {book[0]}\nEmail: {book[1]}\nAuthor: {book[2]}\n")
+                            print("*********************************************************")
+                        input("\nPress Enter To Continue...")
+                    
+                    else:
+                        general.clear()
+                        general.message("\nNo Matches Found!. Please try again.")
+                        time.sleep(2)
+                        general.clear()
+                        continue
+                
+                elif (savingConfirmation.upper() == "N"):
+                     input("\nPress Enter To Continue And Try Again...")
+                     time.sleep(1)
+                     general.clear()
+                     continue
+                else:
+                     general.clear()
+                     general.message("\nWrong letter.\nPlease Try Again\n\nCleaning Screen...\n")
+                     time.sleep(1)
+                     general.clear()
+                     continue
+            
+            elif(opc == "0"):
+                general.clear()
+                general.message("\nL o a d i n g   S c r e e n")
+                time.sleep(2)
+                general.clear()
+                break
+            else:
+                general.clear()
+                general.message("\nWrong pick.\nPlease Try Again\n\nCleaning Screen...\n")
+                time.sleep(2)
+                general.clear()
+                continue            
 
 
 

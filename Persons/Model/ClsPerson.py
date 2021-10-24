@@ -210,6 +210,7 @@ class Persons:
 
                person = personsDatabase.persons.get(int(id), "Person does not exist!. Please try again.")
                if person == "Person does not exist!. Please try again.":
+                   general.clear()
                    print(person)
                    time.sleep(2)
                    general.clear()
@@ -281,14 +282,15 @@ class Persons:
                         continue
 
                     elif (delete.upper() == "N"):
+                        general.clear()
                         input("\nPress Enter To Continue And Try Again...")
-                        time.sleep(1)
+                        time.sleep(2)
                         general.clear()
                         continue
                     else:
                         general.clear()
                         general.message("\nWrong letter.\nPlease Try Again\n\nCleaning Screen...\n")
-                        time.sleep(1)
+                        time.sleep(2)
                         general.clear()
                         continue
             elif(opc == "0"):
@@ -329,7 +331,7 @@ class Persons:
                 menu.writingNameMenu()
 
                 personName = input("Name: .......: ")
-                if not personName:
+                if not personName or personName.isspace():
                     print("\nField can not be empty. Please try again.")
                     time.sleep(1)
                     general.clear()
@@ -377,6 +379,28 @@ class Persons:
                     time.sleep(1)
                     general.clear()
                     continue
+            elif(opc == "2"):
+                general.clear()
+                menu.choosingPerson("Access")
+
+                try:
+                   id = int(input("\nPlease type the person ID: "))
+                except ValueError:
+                    id = int(Persons().newID(personsDatabase.persons))
+
+                person = personsDatabase.persons.get(int(id), "Person does not exist!. Please try again.")
+                if person == "Person does not exist!. Please try again.":
+                   print(person)
+                   time.sleep(2)
+                   general.clear()
+                   continue 
+                else:
+                   general.clear()
+                   print("*********************************************************")
+                   print(f"ID: {id}\nName: {person[0]}\nEmail: {person[1]}\n")
+                   print("*********************************************************")
+                   input("Press Enter To Continue...")
+
             elif(opc == "0"):
                 general.clear()
                 general.message("\nL o a d i n g   S c r e e n")
